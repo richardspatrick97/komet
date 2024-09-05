@@ -370,8 +370,10 @@ public class ExportController {
                     FhirCodeSystemTransform fhirCodeSystemTransform = new FhirCodeSystemTransform(fromDate, toDate, stampCalculator, conceptEntities.stream(), (fhirString) -> {
                         try {
                             updateProgress(2,3);
+                            updateMessage("Saving FHIR export file.");
                             saveFhirFormatToDisk(fhirString, exportFile);
                             updateProgress(3,3);
+                            updateMessage("FHIR export file is successfully saved.");
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
